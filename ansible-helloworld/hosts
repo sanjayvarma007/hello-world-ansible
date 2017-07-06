@@ -1,0 +1,3 @@
+[control]
+ansibleclient ansible_connection=local
+

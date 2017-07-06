@@ -1,0 +1,32 @@
+---
+
+- hosts: control
+  gather_facts: False
+  vars:
+    region: us-east-1
+  tasks:
+    - name: Adding new security group
+      ec2_group:
+        name: helloworld-new
+        description: unique security group for helloworld-new project
+        vpc_id: vpc-3f3fd046
+        region: "{{region}}"
+        aws_access_key: "{{accessid}}"
+        aws_secret_key: "{{secretid}}"
+        rules:
+          - proto: tcp
+            from_port: 22
+            to_port: 22    
+            cidr_ip: 98.223.180.187/32
+          - proto: tcp
+            from_port:  80
+            to_port: 80    
+            cidr_ip: 0.0.0.0/0
+          - proto: tcp
+            from_port:  443
+            to_port: 443
+            cidr_ip: 0.0.0.0/0
+        rules_egress:
+          - proto: all
+            cidr_ip: 0.0.0.0/0
+

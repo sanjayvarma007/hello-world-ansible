@@ -1,0 +1,45 @@
+---
+# script to create ec2 instances  
+- name: Create a ec2 instance
+  hosts: control
+  become: true      
+  gather_facts: False
+  vars:
+    keypair: helloworld
+    instance_type: t2.micro
+    image: ami-a4c7edb2
+    region: us-east-1
+  tasks: 
+    - name: Launching ec2 instance
+      ec2:
+         key_name: "{{ keypair }}"
+         group_id: sg-26d3c158
+         instance_type: "{{ instance_type }}"
+         image: "{{ image }}"
+         instance_profile_name: ec2-s3 #role for full s3 access
+         instance_tags: name=webserver1
+         count: 1
+         user_data: |
+                    #!/bin/bash
+                    yum install httpd -y
+                    yum update -y
+                    aws s3 cp s3://ansible-helloworld-test/index.html /var/www/html/    
+                    service httpd start
+                    chkconfig httpd on
+ 
+         wait: true
+         region: "{{ region }}"
+         aws_access_key: "{{accessid}}" 
+         aws_secret_key: "{{secretid}}"
+      register: ec2
+    
+    - name: Print all ec2 variables
+      debug: var=ec2
+
+        
+  handlers:
+        - name: restart apache2
+          service: name=httpd state=restarted
+        
+
+

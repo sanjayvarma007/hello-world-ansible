@@ -1,0 +1,61 @@
+PLAY [Create a ec2 instance] ****************************************************************************************************************************************************************
+
+TASK [Launching ec2 instance] ***************************************************************************************************************************************************************
+changed: [ansibleclient]
+
+TASK [Print all ec2 variables] **************************************************************************************************************************************************************
+ok: [ansibleclient] => {
+    "changed": false,
+    "ec2": {
+        "changed": true,
+        "instance_ids": [
+            "i-095b6b72a8a93030e"
+        ],
+        "instances": [
+            {
+                "ami_launch_index": "0",
+                "architecture": "x86_64",
+                "block_device_mapping": {
+                    "/dev/xvda": {
+                        "delete_on_termination": true,
+                        "status": "attached",
+                        "volume_id": "vol-08e27151b1ebb2e21"
+                    }
+                },
+                "dns_name": "ec2-34-228-195-95.compute-1.amazonaws.com",
+                "ebs_optimized": false,
+                "groups": {
+                    "sg-26d3c158": "ansible-host"
+                },
+                "hypervisor": "xen",
+                "id": "i-095b6b72a8a93030e",
+                "image_id": "ami-a4c7edb2",
+                "instance_type": "t2.micro",
+                "kernel": null,
+                "key_name": "helloworld",
+                "launch_time": "2017-07-06T19:55:56.000Z",
+                "placement": "us-east-1b",
+                "private_dns_name": "ip-172-31-23-174.ec2.internal",
+                "private_ip": "172.31.23.174",
+                "public_dns_name": "ec2-34-228-195-95.compute-1.amazonaws.com",
+                "public_ip": "34.228.195.95",
+                "ramdisk": null,
+                "region": "us-east-1",
+                "root_device_name": "/dev/xvda",
+                "root_device_type": "ebs",
+                "state": "running",
+                "state_code": 16,
+                "tags": {
+                    "name": "webserver1"
+                },
+                "tenancy": "default",
+                "virtualization_type": "hvm"
+            }
+        ],
+        "tagged_instances": []
+    }
+}
+
+PLAY RECAP **********************************************************************************************************************************************************************************
+ansibleclient              : ok=2    changed=1    unreachable=0    failed=0
+
