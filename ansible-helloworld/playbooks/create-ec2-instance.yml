@@ -13,7 +13,7 @@
     - name: Launching ec2 instance
       ec2:
          key_name: "{{ keypair }}"
-         group_id: sg-26d3c158
+         group_id: sg-be46d8cf
          instance_type: "{{ instance_type }}"
          image: "{{ image }}"
          instance_profile_name: ec2-s3 #role for full s3 access
@@ -23,7 +23,8 @@
                     #!/bin/bash
                     yum install httpd -y
                     yum update -y
-                    aws s3 cp s3://ansible-helloworld-test/index.html /var/www/html/    
+                    aws s3 cp s3://ansible-helloworld-test/index.html /var/www/html/  
+                    aws s3 cp s3://ansible-helloworld-test/httpd.conf /etc/httpd/conf/httpd.conf  
                     service httpd start
                     chkconfig httpd on
  
