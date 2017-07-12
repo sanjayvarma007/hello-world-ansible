@@ -1,0 +1,4 @@
+Created an Elastic load balancer named "Helloworld-ansible" and backed it with respective ec2-instance named "webserver1"
+Using AWS certificate manager I issued a self signed certificated named "ansible-helloworld-cert" to my domain name addressed below.
+The ELB is later attached to route53 domain name "www.hellocloudnerds.com" to serverthe client with the services
+Please go through the attachments in this directory for implementation details
