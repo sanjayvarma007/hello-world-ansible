@@ -1,0 +1,3 @@
+In this section we integrate our domain name "www.hellocloudnerds.com" with our ELB load balancer.
+Once the routing policy is set (which was simple routing with round robin) the url will be accessible to the client to serve our frontend application through our ELB
+Please go through the attached images.
