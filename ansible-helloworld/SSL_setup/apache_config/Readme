@@ -1,0 +1,3 @@
+The httpd.conf is fetched from the S3 bucket image attached below
+The changes are made to the :create-ec2-instance.yml" to pull the file from s3 during the instance booting process
+The httpd.conf file is modified to redirect all the http request to https url. Please find the change at the very bottom within the httpd.conf file.
