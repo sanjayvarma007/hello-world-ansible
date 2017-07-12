@@ -1,0 +1,26 @@
+---
+- name: Setting ELB active instances
+  hosts: control
+  connection: local
+  tasks:
+    - name: Instance De-register
+      ec2_elb:
+        region: us-east-1
+        ec2_elbs: helloworld-ansible
+        instance_id: "{{ item }}"
+        state: absent
+        aws_access_key: "{{accessid}}"
+        aws_secret_key: "{{secretid}}"
+      with_items:
+        - i-08e1807d55018746e  
+
+    - name: Instance Register
+      ec2_elb:
+        region: us-east-1
+        ec2_elbs: helloworld-ansible
+        instance_id: "{{ item }}"
+        state: present
+        aws_access_key: "{{accessid}}"
+        aws_secret_key: "{{secretid}}"
+      with_items:
+        - i-09e6f1d027871a15c   
