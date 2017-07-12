@@ -19,6 +19,8 @@ ADHOC command
 ansible-playbook playbooks/terminate-ec2-instance.yml --extra-vars="instanceid=.... accessid=... secretid=.... "
 
 The projects desired outputs can be found within the outputs subdirectory
+
+SSL SETUP and RE-Directs
 -----------------------------------------------------------------------------------------------------------------------------------
 
 As part of HTTPS implementation for the website a detailed explanation can be found under SSL_setup directory. Please go through each sub folder to successfully setup a SSL enabled website for your application
